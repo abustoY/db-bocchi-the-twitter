@@ -22,7 +22,7 @@ liquibase {
       changelogFile 'changelog/changelog-master.xml'
       url 'jdbc:mysql://localhost:50000/bocchi_the_twitter'
       username 'root'
-      password 'root'
+      password 'password'
       logLevel "info"
     }
   }
