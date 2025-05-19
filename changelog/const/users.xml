@@ -23,4 +23,10 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="users-2" author="yotsuba">
+        <addColumn tableName="users">
+            <column name="avatar" type="LONGBLOB"/>
+            <column name="avatar_content_type" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
