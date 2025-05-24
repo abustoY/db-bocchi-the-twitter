@@ -11,4 +11,5 @@
     <include file="changelog/const/users.xml"/>
     <include file="changelog/const/tweets.xml"/>
     <include file="changelog/const/media.xml"/>
+    <include file="changelog/const/user_followers.xml"/>
 </databaseChangeLog>

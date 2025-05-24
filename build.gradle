@@ -20,6 +20,7 @@ liquibase {
   activities {
     main {
       changelogFile 'changelog/changelog-master.xml'
+      // url 'jdbc:mysql://tramway.proxy.rlwy.net:52806/railway'
       url 'jdbc:mysql://localhost:50000/bocchi_the_twitter'
       username 'root'
       password 'password'

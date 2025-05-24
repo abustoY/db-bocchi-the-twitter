@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet id="user-followers-1" author="yotsuba">
+        <createTable tableName="user_followers">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="follower_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="user-followers-2" author="yotsuba">
+        <addForeignKeyConstraint 
+            baseTableName="user_followers"
+            baseColumnNames="user_id"
+            referencedTableName="users"
+            referencedColumnNames="id"
+            constraintName="fk_user_followers_user_id"
+            onDelete="CASCADE"
+            onUpdate="RESTRICT"/>
+        <addForeignKeyConstraint 
+            baseTableName="user_followers"
+            baseColumnNames="follower_id"
+            referencedTableName="users"
+            referencedColumnNames="id"
+            constraintName="fk_user_followers_follower_id"
+            onDelete="CASCADE"
+            onUpdate="RESTRICT"/>
+        <addUniqueConstraint 
+            tableName="user_followers"
+            columnNames="user_id,follower_id"
+            constraintName="uk_user_followers_pair"/>
+    </changeSet>
+
+</databaseChangeLog>
