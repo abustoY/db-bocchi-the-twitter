@@ -59,3 +59,14 @@ docker run -d \
 ### 構造
 - `changelog-master.xml`: メインのチェンジログファイル
 - `changelog/const/`: テーブル定義などの定数ファイル
+
+## 初期データの挿入（MySQL Workbench）
+
+以下3つのファイルを **順番に** 実行してください：
+
+1. `init/init-users.sql`
+2. `init/init-tweets.sql`
+3. `init/init-user-followers.sql`
+
+> 💡 いずれも `USE bocchi_the_twitter;` を含んでいますので、そのまま実行可能です。
+> 外部キー制約があるため、必ずこの順序で実行してください。
